@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.MovieMate" parent="Base.Theme.MovieMate" />
+
+    <style name="App.Custom.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/secondary</item>
+    </style>
+
 </resources>

@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">MovieMate</string>
+
+    <!--    Menu Item Names-->
     <string name="menuitem_home">Home</string>
     <string name="menuitem_watchlist">Watchlist</string>
     <string name="menuitem_watched">Watched</string>
     <string name="menuitem_profile">Profile</string>
+
+    <!--    -->
     <string name="home_page">Home Page</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="profile_page">Profile Page</string>
+    <string name="watchlist">Watchlist Page</string>
     <string name="watched_fragment">Watched Page</string>
-    <string name="watchlist">Watchlist</string>
 
 </resources>

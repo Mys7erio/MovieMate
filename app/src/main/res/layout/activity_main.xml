@@ -15,6 +15,7 @@
         android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemActiveIndicatorStyle="@style/App.Custom.ActiveIndicator"
         app:itemBackground="@color/fg_dark"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
