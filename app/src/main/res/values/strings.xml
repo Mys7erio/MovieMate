@@ -12,5 +12,12 @@
     <string name="profile_page">Profile Page</string>
     <string name="watchlist">Watchlist Page</string>
     <string name="watched_fragment">Watched Page</string>
+    <string name="login_page_username_hint">shakir@example.com</string>
+    <string name="login_page_password_hint">********</string>
+    <string name="login_page_subtitle">Sign in to explore movies</string>
+    <string name="login_page_email_label">Enter your email</string>
+    <string name="login_page_password_label">Enter your password</string>
+    <string name="login_page_title">Log In</string>
+    <string name="sign_in">Sign In</string>
 
 </resources>
