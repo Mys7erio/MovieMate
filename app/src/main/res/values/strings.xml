@@ -12,7 +12,7 @@
     <string name="profile_page">Profile Page</string>
     <string name="watchlist">Watchlist Page</string>
     <string name="watched_fragment">Watched Page</string>
-    <string name="login_page_username_hint">shakir@example.com</string>
+    <string name="login_page_username_hint">you@example.com</string>
     <string name="login_page_password_hint">********</string>
     <string name="login_page_subtitle">Sign in to explore movies</string>
     <string name="login_page_email_label">Enter your email</string>
@@ -21,5 +21,9 @@
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
     <string name="log_out">Log Out</string>
+    <string name="register_page_subtitle">Welcome, great movies await you :)</string>
+    <string name="nickname_label">Pick a nickname</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="nickname_hint">Let out your creative side</string>
 
 </resources>

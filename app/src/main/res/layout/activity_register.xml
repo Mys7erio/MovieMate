@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:singleLine="true"
                 android:text="@string/register"
                 android:textColor="@color/white"
                 android:textSize="48sp"
@@ -40,7 +41,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginVertical="8dp"
                 android:gravity="center"
-                android:text="Welcome, Great Movies Await You :)"
+                android:text="@string/register_page_subtitle"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -50,17 +51,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="30dp"
-                android:text="Pick a Nickname"
+                android:text="@string/nickname_label"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/etNickname"
+                android:id="@+id/etRegNickname"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:autofillHints="emailAddress"
-                android:hint="Unleash your creative side"
+                android:hint="@string/nickname_hint"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="@color/offwhite"
@@ -76,7 +77,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etRegUsername"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
@@ -97,7 +98,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/etRegPassword"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
@@ -117,31 +118,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Already have an account?"
-                    android:textSize="16sp"
-                    android:textColor="@color/offwhite" />
+                    android:text="@string/already_have_an_account"
+                    android:textColor="@color/offwhite"
+                    android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/signInLink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:letterSpacing="0.075"
-                    android:text="Sign In"
+                    android:text="@string/sign_in"
                     android:textColor="@color/hyperblue"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnSignIn"
+                android:id="@+id/btnRegRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="16dp"
                 android:backgroundTint="@color/primary"
-                android:maxWidth="310dp"
                 android:paddingVertical="12dp"
-                android:text="@string/sign_in"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
