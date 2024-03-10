@@ -10,6 +10,7 @@ import android.content.Intent
 import android.widget.Toast
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import androidx.core.view.WindowInsetsCompat
 
 class RegisterActivity : AppCompatActivity() {
@@ -55,12 +56,26 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
+
+                    // If nickname (displayname) is provided, add it after account creation
+                    // This is the only way :/
+                    if (nickname != "") {
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(nickname)
+                            .build()
+                        user!!.updateProfile(profileUpdates)
+                    }
+
+                    // Toast registration successful message and navigate to Home Page
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+
+                    // Sleeping for 1s to make sure that the username gets updated in the home page
+                    Thread.sleep(1000)
                     val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
+                    finish()
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
