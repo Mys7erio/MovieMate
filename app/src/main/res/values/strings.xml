@@ -19,5 +19,7 @@
     <string name="login_page_password_label">Enter your password</string>
     <string name="login_page_title">Log In</string>
     <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="log_out">Log Out</string>
 
 </resources>

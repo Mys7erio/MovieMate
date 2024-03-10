@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize firebase auth
         auth = FirebaseAuth.getInstance()
-//        Toast.makeText(applicationContext, auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
 
         bottomNavigationBar = findViewById(R.id.bottomNavView)
         bottomNavigationBar.setOnItemSelectedListener { menuItem ->
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (auth.currentUser == null) {
-            Toast.makeText(this, "Please Login...", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Please Login...", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

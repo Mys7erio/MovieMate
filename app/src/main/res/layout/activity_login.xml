@@ -60,11 +60,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
+                android:autofillHints="emailAddress"
                 android:hint="@string/login_page_username_hint"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/white"
                 android:textColorHint="@color/offwhite"
-                android:autofillHints="emailAddress"
                 android:textSize="16sp" />
 
             <TextView
@@ -95,16 +95,52 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="16dp"
                 android:backgroundTint="@color/primary"
+                android:maxWidth="310dp"
                 android:paddingVertical="12dp"
                 android:text="@string/sign_in"
-                android:maxWidth="310dp"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <androidx.constraintlayout.widget.Barrier
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:barrierDirection="top" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="36dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/offwhite" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:text="OR"
+                    android:textColor="@color/offwhite" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/offwhite" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="16dp"
+                android:backgroundTint="@color/primary"
+                android:maxWidth="310dp"
+                android:paddingVertical="12dp"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </RelativeLayout>
