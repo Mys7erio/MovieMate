@@ -13,6 +13,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etUsername: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnSignIn: Button
+    private lateinit var btnRegister: Button
 
     private lateinit var auth: FirebaseAuth
 
@@ -23,9 +24,11 @@ class LoginActivity : AppCompatActivity() {
         etUsername = findViewById(R.id.etUsername)
         etPassword = findViewById(R.id.etPassword)
         btnSignIn = findViewById(R.id.btnSignIn)
+        btnRegister = findViewById(R.id.btnRegister)
 
         auth = FirebaseAuth.getInstance()
 
+        btnRegister.setOnClickListener { gotoRegister() }
         btnSignIn.setOnClickListener {
             handleLogin(
                 etUsername.text.toString(),
@@ -34,7 +37,18 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun gotoRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun handleLogin(email: String, password: String) {
+        if (email == "" || password == "") {
+            Toast.makeText(this, "Please enter valid credentials", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Attempt sign in if email and password are not empty
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
