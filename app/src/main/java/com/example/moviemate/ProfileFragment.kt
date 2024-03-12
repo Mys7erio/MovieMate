@@ -8,12 +8,32 @@ import android.widget.Button
 import android.view.ViewGroup
 import android.widget.Toast
 import android.content.Intent
+import androidx.core.content.ContextCompat
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var signOutBtn: Button
+    private lateinit var btnUpdateProfile: MaterialButton
+    private var editProfileEnabled = false
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        auth = FirebaseAuth.getInstance()
+        signOutBtn = view.findViewById<Button>(R.id.btnSignOut)
+        btnUpdateProfile = view.findViewById<MaterialButton>(R.id.btnUpdateProfile)
+
+        // Handle Sign Out
+        signOutBtn.setOnClickListener { handleSignOut() }
+        return view
+    }
 
     private fun handleSignOut() {
         // FLAG_ACTIVITY_CLEAR_TASK:
@@ -30,20 +50,6 @@ class ProfileFragment : Fragment() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
-        auth = FirebaseAuth.getInstance()
-        signOutBtn = view.findViewById<Button>(R.id.btnSignOut)
-
-        // Handle Sign Out
-        signOutBtn.setOnClickListener { handleSignOut() }
-        return view
     }
 
 }

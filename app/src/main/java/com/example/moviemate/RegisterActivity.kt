@@ -92,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     val errorInfo = task.exception?.message
-                    Log.e("MovieMate", errorInfo)
+                    Log.e("MovieMate", errorInfo.toString())
                     Toast.makeText(this, "Failed to create account: $errorInfo", Toast.LENGTH_SHORT).show()
                 }
             }

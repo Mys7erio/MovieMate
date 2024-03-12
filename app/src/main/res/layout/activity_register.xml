@@ -17,17 +17,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="205dp"
-            android:background="@drawable/login_background">
+            android:background="@drawable/login_background"
+            android:paddingTop="205dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:background="@drawable/rounder_corners_top"
                 android:orientation="vertical"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="24dp"
-                android:paddingHorizontal="12dp">
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
                     android:layout_width="match_parent"

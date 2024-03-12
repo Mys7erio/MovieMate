@@ -7,4 +7,8 @@
     <color name="fg_dark">#2F2F2F</color>
     <color name="offwhite">#C0C0C0</color>
     <color name="hyperblue">#2779F6</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">@color/fg_dark</color>
+
 </resources>
+
