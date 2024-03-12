@@ -25,5 +25,6 @@
     <string name="nickname_label">Pick a nickname</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="nickname_hint">Let out your creative side</string>
+    <string name="register_page_confirm_password">Confirm password</string>
 
 </resources>

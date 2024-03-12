@@ -1,15 +1,12 @@
 package com.example.moviemate
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
-import android.widget.Button
-import android.widget.Toast
+import android.widget.TextView
 
 class HomeFragment : Fragment() {
 
@@ -42,7 +39,7 @@ class HomeFragment : Fragment() {
     private fun setGreeting() {
         // Set greeting for user on home fragment
         val nickname = auth.currentUser?.displayName
-        val greeting = "Welcome, " + nickname.toString() ?: "Adventurer"
+        val greeting = ("Welcome, " + nickname.toString()) ?: "Adventurer"
         tvHomeGreeting.text = greeting
     }
 

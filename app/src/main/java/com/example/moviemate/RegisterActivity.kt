@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import android.widget.TextView
 import android.widget.EditText
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etNickname: EditText
     private lateinit var etUsername: EditText
     private lateinit var etPassword: EditText
+    private lateinit var etConfPassword: EditText
     private lateinit var btnRegister: Button
 
 
@@ -31,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         etNickname = findViewById(R.id.etRegNickname)
         etUsername = findViewById(R.id.etRegUsername)
         etPassword = findViewById(R.id.etRegPassword)
+        etConfPassword = findViewById(R.id.etRegConfPassword)
         btnRegister = findViewById(R.id.btnRegRegister)
 
         signInText = findViewById(R.id.signInLink)
@@ -40,19 +43,29 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btnRegister.setOnClickListener {
-            handleRegistration(
-                etNickname.text.toString(),
-                etUsername.text.toString(),
-                etPassword.text.toString()
-            )
+            handleRegistration()
         }
     }
 
-    private fun handleRegistration(nickname: String, email: String, password: String) {
+    private fun handleRegistration() {
+        val nickname = etNickname.text.toString()
+        val email = etUsername.text.toString()
+        val password = etPassword.text.toString()
+        val confPassword = etConfPassword.text.toString()
+
+        // Check if email and passwords are not empty
         if (email == "" || password == "") {
             Toast.makeText(this, "Please fill up all fields", Toast.LENGTH_SHORT).show()
             return
         }
+
+        // Check if password and confirm passwords match
+        if (!password.equals(confPassword)) {
+            Toast.makeText(this, "Passwords do no match", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Register user
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -78,7 +91,9 @@ class RegisterActivity : AppCompatActivity() {
 
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
+                    val errorInfo = task.exception?.message
+                    Log.e("MovieMate", errorInfo)
+                    Toast.makeText(this, "Failed to create account: $errorInfo", Toast.LENGTH_SHORT).show()
                 }
             }
     }
