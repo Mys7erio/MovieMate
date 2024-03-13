@@ -51,7 +51,11 @@ class ProfileFragment : Fragment() {
 
         if (auth.currentUser!!.displayName.isNullOrEmpty()) {
             nickname = "Adventurer"
+        } else {
+            nickname = auth.currentUser!!.displayName!!
         }
+
+
 
         // Enable update profile button when the user edits text in the profile section
         matETCurrentPassword = view.findViewById(R.id.matETProfileCurrentPassword)
