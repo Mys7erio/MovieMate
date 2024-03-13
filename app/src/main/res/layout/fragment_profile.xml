@@ -78,94 +78,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:text="Profile"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/filledTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nickname"
-                app:boxStrokeColor="@color/offwhite"
-                app:cursorColor="@color/hyperblue"
-                app:hintTextColor="@color/white">
-
-                <!--this is the actual edit text which takes the input-->
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Drew Taggart"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Current Password"
-                app:boxStrokeColor="@color/offwhite"
-                app:cursorColor="@color/hyperblue"
-                app:endIconMode="password_toggle"
-                app:endIconTint="@color/offwhite"
-                app:hintTextColor="@color/white">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="New Password"
-                app:boxStrokeColor="@color/offwhite"
-                app:cursorColor="@color/hyperblue"
-                app:endIconMode="password_toggle"
-                app:endIconTint="@color/offwhite"
-                app:hintTextColor="@color/white">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnUpdateProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/button_states"
-                android:text="Update Profile"
-                android:enabled="false"
-                android:textColor="@color/button_text_states"
-                android:textSize="16sp"
-                app:cornerRadius="4dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
                 android:text="Preferences"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -198,6 +110,95 @@
                 android:backgroundTint="@color/primary"
                 android:text="Update Preferences"
                 android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="4dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nickname"
+                app:boxStrokeColor="@color/offwhite"
+                app:cursorColor="@color/hyperblue"
+                app:hintTextColor="@color/white">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/matETProfileNickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drew Taggart"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Current Password"
+                app:boxStrokeColor="@color/offwhite"
+                app:cursorColor="@color/hyperblue"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/offwhite"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/matETProfileCurrentPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:hint="New Password"
+                app:boxStrokeColor="@color/offwhite"
+                app:cursorColor="@color/hyperblue"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/offwhite"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/matETProfileNewPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpdateProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:layout_marginVertical="64dp"
+                android:backgroundTint="@color/button_states"
+                android:enabled="false"
+                android:text="Update Profile"
+                android:textColor="@color/button_text_states"
                 android:textSize="16sp"
                 app:cornerRadius="4dp" />
 
