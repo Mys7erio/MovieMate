@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 
 class ProfileFragment : Fragment() {
 
@@ -55,8 +56,6 @@ class ProfileFragment : Fragment() {
             nickname = auth.currentUser!!.displayName!!
         }
 
-
-
         // Enable update profile button when the user edits text in the profile section
         matETCurrentPassword = view.findViewById(R.id.matETProfileCurrentPassword)
         matETCurrentPassword.addTextChangedListener(object : TextWatcher {
@@ -92,16 +91,33 @@ class ProfileFragment : Fragment() {
                 }
             }
         })
+
+        // Add handler for profile updation
+        btnUpdateProfile.setOnClickListener { handleProfileUpdate() }
         return view
     }
 
-    private fun handleProfileUpdate() {}
+    private fun handleProfileUpdate() {
+        if (!matETProfileNickname.text!!.isEmpty()) {
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(matETProfileNickname.text.toString())
+                .build()
+            auth.currentUser!!.updateProfile(profileUpdates)
+            Toast.makeText(requireContext(), "Nickname Changed", Toast.LENGTH_LONG).show()
+
+            // Update nickname and email
+            nickname = matETProfileNickname.text.toString()
+            tvProfileNickname.text = nickname
+            matETProfileNickname.setText(nickname)
+            btnUpdateProfile.isEnabled = false
+        }
+    }
 
     override fun onResume() {
         super.onResume()
         // Update nickname and email
-        tvProfileNickname.text = this.nickname
-        matETProfileNickname.setText(this.nickname)
+        tvProfileNickname.text = nickname
+        matETProfileNickname.setText(nickname)
     }
 
     private fun handleSignOut() {
