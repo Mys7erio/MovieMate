@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +28,27 @@ class HomeFragment : Fragment() {
         // Me being the rebel I am, let's ignore it :P
         // auth = (activity as? MainActivity)?.auth ?: FirebaseAuth.getInstance()
         auth = (activity as MainActivity).auth
+
+
+        val movieList = mutableListOf(
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+            MovieCardModel("Edge of Tomorrow", 8.5),
+        )
+
+        val rvHome = view.findViewById<RecyclerView>(R.id.rvHome)
+        rvHome.layoutManager = LinearLayoutManager(requireContext())
+        rvHome.adapter = MovieCardAdapter(movieList)
 
         return view
     }
