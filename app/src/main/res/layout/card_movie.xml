@@ -4,21 +4,16 @@
     android:layout_width="192dp"
     android:layout_height="256dp"
     android:layout_gravity="center"
+    android:layout_marginRight="16dp"
+    android:clickable="true"
     app:cardBackgroundColor="@color/fg_dark"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/cmMovieImage"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            android:layout_weight="0.7"-->
-        <!--            android:scaleType="fitXY"-->
-        <!--            android:src="@drawable/elementals" />-->
 
         <TextView
             android:id="@+id/cmMovieName"
