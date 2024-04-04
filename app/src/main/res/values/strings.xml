@@ -26,5 +26,7 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="nickname_hint">Let out your creative side</string>
     <string name="register_page_confirm_password">Confirm password</string>
+    <string name="home_fragment_greeting">Welcome, Adventurer</string>
+    <string name="movie_poster">Movie Poster</string>
 
 </resources>

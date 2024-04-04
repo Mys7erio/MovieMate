@@ -35,13 +35,7 @@ class HomeFragment : Fragment() {
         auth = (activity as MainActivity).auth
 
         requestQueue = Volley.newRequestQueue(requireContext())
-
-        // Make Volley request to fetch recommendations
-        getTrending(requestQueue, apiKey) { movieList ->
-            val rvHome = view.findViewById<RecyclerView>(R.id.rvHome)
-            rvHome.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvHome.adapter = MovieCardAdapter(movieList)
-        }
+        populateHomeScreen(view)
 
         return view
     }
@@ -55,5 +49,37 @@ class HomeFragment : Fragment() {
         else
             tvHomeGreeting.text = nickname.toString()
     }
+
+
+    private fun populateHomeScreen(view: View) {
+        // TRENDING MOVIES
+        getTrending(requestQueue, apiKey) { movieList ->
+            val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingMovies)
+            rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList)
+        }
+
+        // RECOMMENDED MOVIES
+        getRecommendations(requestQueue, apiKey, 693134) { movieList ->
+            val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedMovies)
+            rvRecommends.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+            rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList)
+        }
+
+        // TRENDING SHOWS
+        getTrending(requestQueue, apiKey) { movieList ->
+            val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingShows)
+            rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList)
+        }
+
+        // RECOMMENDED SHOWS
+        getRecommendations(requestQueue, apiKey, 13183) { movieList ->
+            val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedShows)
+            rvRecommends.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+            rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList)
+        }
+    }
+
 
 }

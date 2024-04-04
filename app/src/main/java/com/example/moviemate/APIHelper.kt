@@ -1,8 +1,10 @@
 package com.example.moviemate
 
+import android.graphics.Bitmap
 import android.util.Log
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
 
@@ -35,13 +37,12 @@ fun createErrorListener(): Response.ErrorListener {
     }
 }
 
-fun createHeaders(apiKey: String): MutableMap<String, String> {
+private fun createHeaders(apiKey: String): MutableMap<String, String> {
     // Function to set headers
     val headers = HashMap<String, String>()
     headers["Authorization"] = "Bearer $apiKey"
     return headers
 }
-
 
 
 fun getTrending(
@@ -53,7 +54,8 @@ fun getTrending(
     val moviesList = ArrayList<MovieModel>()
 
     val request = object :
-        JsonObjectRequest(Method.GET, url, null,
+        JsonObjectRequest(
+            Method.GET, url, null,
 
             // RUN CODE ON SUCCESS
             Response.Listener { response ->
@@ -94,7 +96,8 @@ fun getRecommendations(
     val moviesList = ArrayList<MovieModel>()
 
     val request = object :
-        JsonObjectRequest(Method.GET, url, null,
+        JsonObjectRequest(
+            Method.GET, url, null,
 
             // RUN CODE ON SUCCESS
             Response.Listener { response ->

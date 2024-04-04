@@ -60,7 +60,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.google.firebase:firebase-auth:22.3.1")
-    implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.activity:activity:1.8.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.android.volley:volley:1.2.1")
 }

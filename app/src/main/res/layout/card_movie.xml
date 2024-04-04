@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="192dp"
-    android:layout_height="256dp"
+    android:layout_width="144dp"
+    android:layout_height="192dp"
     android:layout_gravity="center"
-    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
     android:clickable="true"
     app:cardBackgroundColor="@color/fg_dark"
     app:cardCornerRadius="16dp"
@@ -15,14 +15,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/cmMovieName"
+<!--        <TextView-->
+<!--            android:id="@+id/cmMovieName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:text="MOVIE NAME"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="24sp" />-->
+
+        <ImageView
+            android:id="@+id/cardPoster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="SOMETHING"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:scaleType="fitXY"
+            android:contentDescription="@string/movie_poster"
+            app:srcCompat="@drawable/not_loaded" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

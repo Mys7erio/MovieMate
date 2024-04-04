@@ -2,8 +2,8 @@
 <resources>
     <color name="primary">#DC143C</color>
     <color name="secondary">#778899</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="fg_dark">#2F2F2F</color>
     <color name="offwhite">#C0C0C0</color>
     <color name="hyperblue">#2779F6</color>
