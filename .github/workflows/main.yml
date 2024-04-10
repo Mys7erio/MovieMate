@@ -1,3 +1,5 @@
+# Script taken from: https://github.com/marketplace/actions/automated-build-android-app-with-github-action
+
 name: Generated APK AAB (Upload - Create Artifact To Github Action)
 
 env:
@@ -8,7 +10,7 @@ env:
 on:
 
   push:
-    branches: ['main']
+    branches: ['main', 'setup-ci']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,6 +37,9 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
           cache: 'gradle'
+
+      - name: Create local.properties
+        run: echo "apiKey=${{ secrets.APIKEY }}" >> local.properties
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
