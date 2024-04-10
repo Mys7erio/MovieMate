@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +21,8 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var tvHomeGreeting: TextView
     private lateinit var requestQueue: RequestQueue
+    private lateinit var fragmentManager: FragmentManager
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -33,6 +37,7 @@ class HomeFragment : Fragment() {
         // Fancy version feat. Typecasting, null safety OP. and elvis OP.
         // Me being a rebel, let's ignore it :P
         auth = (activity as MainActivity).auth
+        fragmentManager = (activity as MainActivity).supportFragmentManager
 
         requestQueue = Volley.newRequestQueue(requireContext())
         populateHomeScreen(view)
@@ -56,30 +61,30 @@ class HomeFragment : Fragment() {
         getTrending(requestQueue, apiKey) { movieList ->
             val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingMovies)
             rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList)
-        }
+            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
 
-        // RECOMMENDED MOVIES
-        getRecommendations(requestQueue, apiKey, 693134) { movieList ->
-            val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedMovies)
-            rvRecommends.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList)
-        }
+            // RECOMMENDED MOVIES
+            getRecommendations(requestQueue, apiKey, 693134) { movieList ->
+                val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedMovies)
+                rvRecommends.layoutManager =
+                    LinearLayoutManager(requireContext(), HORIZONTAL, false)
+                rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+            }
 
-        // TRENDING SHOWS
-        getTrending(requestQueue, apiKey) { movieList ->
-            val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingShows)
-            rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList)
-        }
+            // TRENDING SHOWS
+            getTrending(requestQueue, apiKey) { movieList ->
+                val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingShows)
+                rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
+                rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+            }
 
-        // RECOMMENDED SHOWS
-        getRecommendations(requestQueue, apiKey, 13183) { movieList ->
-            val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedShows)
-            rvRecommends.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList)
+            // RECOMMENDED SHOWS
+            getRecommendations(requestQueue, apiKey, 13183) { movieList ->
+                val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedShows)
+                rvRecommends.layoutManager =
+                    LinearLayoutManager(requireContext(), HORIZONTAL, false)
+                rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+            }
         }
     }
-
-
 }

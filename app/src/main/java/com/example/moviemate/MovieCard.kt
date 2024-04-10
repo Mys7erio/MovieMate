@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageRequest
 
 
 private const val imageBaseAPI = "https://image.tmdb.org/t/p"
-private const val imageSize = "w300"   // w45, w92, w154, w185, w300, w500, original
+
+// w45, w92, w154, w185, w300, w500, original
+private const val imageSize = "w300"
 
 data class MovieModel(
     val id: String,
@@ -36,20 +38,13 @@ class MovieCardVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var genres: List<String> = emptyList()
     var posterPath: String = ""
     var backdropPath: String = ""
-
-
-    init {
-        // Add click listener to the itemView (the whole card)
-        itemView.setOnClickListener {
-            val movieName = title // Assuming title is the movie name
-            Toast.makeText(itemView.context, movieName, Toast.LENGTH_SHORT).show()
-        }
-    }
 }
 
 class MovieCardAdapter(
     private val requestQueue: RequestQueue,
-    private val movieList: ArrayList<MovieModel>
+    private val movieList: ArrayList<MovieModel>,
+    private val fragmentManager: FragmentManager
+
 ) :
     RecyclerView.Adapter<MovieCardVH>() {
     override fun getItemCount(): Int {
@@ -82,6 +77,13 @@ class MovieCardAdapter(
         holder.genres = currentItem.genres
         holder.posterPath = currentItem.posterPath
         holder.backdropPath = currentItem.backdropPath
+        holder.itemView.setOnClickListener {
+            Log.e("MOVIEMATE", "CLICKED: ${holder.title}")
+            fragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_container, MovieInfoFragment())
+                .commit()
+        }
     }
 
 

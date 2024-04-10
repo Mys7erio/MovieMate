@@ -12,9 +12,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bottomNavigationBar: BottomNavigationView
+    private var apiKey: String = ""
     lateinit var auth: FirebaseAuth
-    var apiKey: String = ""
+    private lateinit var bottomNavigationBar: BottomNavigationView
+    private val supportFragmentManager = getSupportFragmentManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.apiKey = BuildConfig.API_KEY
-
     }
 
     override fun onStart() {
@@ -44,16 +44,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-//    private fun getTMDBApiKey(): String {
-//        val properties = Properties()
-//        val localPropertiesFile = File("local.properties")
-//        if (localPropertiesFile.exists()) {
-//            localPropertiesFile.inputStream().use { properties.load(it) }
-//        }
-//        apiKey = properties.getProperty("sdk.dir")
-//        return apiKey
-//    }
 
     private fun handleNavigation(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {

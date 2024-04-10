@@ -1,10 +1,8 @@
 package com.example.moviemate
 
-import android.graphics.Bitmap
 import android.util.Log
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
 
