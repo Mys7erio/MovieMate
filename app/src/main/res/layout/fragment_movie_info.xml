@@ -56,10 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="4dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
             android:text="Elemental"
             android:textColor="@color/white"
             android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivMovieBackdrop" />
 
@@ -67,21 +68,126 @@
             style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isIndicator="true"
             android:layout_margin="8dp"
+            android:isIndicator="true"
             android:progressBackgroundTint="@color/offwhite"
             android:progressTint="@color/goldenyellow"
             android:rating="4.5"
             android:stepSize="0.1"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle"
-            app:layout_constraintLeft_toRightOf="@id/cvMoviePoster" />
+            app:layout_constraintLeft_toRightOf="@id/cvMoviePoster"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:contentDescription="@string/save_to_watch_later"
+                android:src="@drawable/baseline_bookmark_border"
+                android:tooltipText="@string/save_to_watch_later" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:contentDescription="@string/mark_as_watched"
+                android:src="@drawable/check_circle_outline"
+                android:tooltipText="@string/mark_as_watched" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:contentDescription="@string/notify"
+                android:src="@drawable/outline_circle_notification"
+                android:tooltipText="@string/notify" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Genres"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:chipSpacingVertical="0dp">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animation" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comedy" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Family" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fantasy" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Romance" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adventure" />
+        </com.google.android.material.chip.ChipGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Overview"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:letterSpacing="0.015"
+            android:text="In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
+            android:textColor="@color/offwhite" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
