@@ -61,7 +61,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTrendingMovies"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="200dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,7 +77,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommendedMovies"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="200dp" />
 
 
         <TextView
@@ -92,7 +94,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTrendingShows"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="200dp" />
 
 
         <TextView
@@ -108,6 +111,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommendedShows"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="200dp" />
     </LinearLayout>
 </ScrollView>

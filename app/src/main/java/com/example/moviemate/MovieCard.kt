@@ -87,6 +87,7 @@ class MovieCardAdapter(
             fragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_container, movieInfoFragment)
+                .addToBackStack(null)
                 .commit()
         }
     }
