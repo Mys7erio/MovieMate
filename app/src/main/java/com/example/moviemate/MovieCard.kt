@@ -1,5 +1,6 @@
 package com.example.moviemate
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,22 +18,22 @@ private const val imageBaseAPI = "https://image.tmdb.org/t/p"
 private const val imageSize = "w300"
 
 data class MovieModel(
-    val id: String,
+    val id: Int,
     val title: String = "N/A",
-    val description: String = "",
+    val overview: String = "",
     val voteAverage: Double = 0.0,
 
     val releaseDate: String = "01-01-1970",
-    val genres: List<String> = listOf(),
+    var genres: MutableList<String> = mutableListOf(),
     val posterPath: String = "",
     val backdropPath: String = "",
 )
 
 class MovieCardVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val cardPoster: ImageView = itemView.findViewById(R.id.cardPoster)
-    var id: String = ""
+    var id: Int = 0
     var title: String = ""
-    var description: String = ""
+    var overview: String = ""
     var voteAverage: Double? = null
     var releaseDate: String = ""
     var genres: List<String> = emptyList()
@@ -71,7 +72,7 @@ class MovieCardAdapter(
         setCardPoster(holder, "$imageBaseAPI/$imageSize/${currentItem.posterPath}")
         holder.id = currentItem.id
         holder.title = currentItem.title
-        holder.description = currentItem.description
+        holder.overview = currentItem.overview
         holder.voteAverage = currentItem.voteAverage
         holder.releaseDate = currentItem.releaseDate
         holder.genres = currentItem.genres
@@ -79,9 +80,13 @@ class MovieCardAdapter(
         holder.backdropPath = currentItem.backdropPath
         holder.itemView.setOnClickListener {
             Log.e("MOVIEMATE", "CLICKED: ${holder.title}")
+            val movieInfoFragment = MovieInfoFragment()
+            movieInfoFragment.arguments = Bundle().apply {
+                putString("MovieID", holder.id.toString())
+            }
             fragmentManager
                 .beginTransaction()
-                .replace(R.id.frame_container, MovieInfoFragment())
+                .replace(R.id.frame_container, movieInfoFragment)
                 .commit()
         }
     }

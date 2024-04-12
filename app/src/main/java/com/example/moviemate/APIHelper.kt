@@ -9,18 +9,27 @@ import org.json.JSONObject
 
 private fun getParsedMovieModel(movieObject: JSONObject): MovieModel {
     return MovieModel(
-        id = movieObject.getString("id"),
+        id = movieObject.getInt("id"),
         title = movieObject.getString("title"),
-        description = movieObject.getString("overview"),
+        overview = movieObject.getString("overview"),
         voteAverage = movieObject.getDouble("vote_average"),
         releaseDate = movieObject.getString("release_date"),
         posterPath = movieObject.getString("poster_path"),
         backdropPath = movieObject.getString("backdrop_path"),
-        genres = (0 until movieObject.getJSONArray("genre_ids")
-            .length()).map { index ->
-            movieObject.getJSONArray("genre_ids").getInt(index).toString()
-        }
+        // Not adding genres list by default
     )
+}
+
+private fun getGenreNames(movieObject: JSONObject): MutableList<String> {
+    val genresNames = mutableListOf<String>()
+    val genresArray = movieObject.getJSONArray("genres")
+    for (i in 0 until genresArray.length()) {
+        val genreObject = genresArray.getJSONObject(i)
+        val genreName = genreObject.getString("name")
+        genresNames.add(genreName)
+    }
+
+    return genresNames
 }
 
 fun createErrorListener(): Response.ErrorListener {
@@ -122,4 +131,40 @@ fun getRecommendations(
 
     queue.add(request)
     return moviesList
+}
+
+
+// MOVIE DETAILS
+
+fun getMovieDetails(
+    queue: RequestQueue,
+    apiKey: String,
+    movieID: Int,
+    callbackFunc: (MovieModel) -> Unit
+) {
+    val url = "https://api.themoviedb.org/3/movie/$movieID"
+    lateinit var movieDetails: MovieModel
+
+    val request = object :
+        JsonObjectRequest(
+            Method.GET, url, null,
+
+            // RUN CODE ON SUCCESS
+            Response.Listener { response ->
+                movieDetails = getParsedMovieModel(response)
+                movieDetails.genres = getGenreNames(response)
+                callbackFunc(movieDetails)
+            },
+
+            // RUN CODE ON FAILURE
+            createErrorListener()
+        ) {
+
+        // Set AUTH Headers
+        override fun getHeaders(): MutableMap<String, String> {
+            return createHeaders(apiKey) // Reusing the headers function
+        }
+    }
+
+    queue.add(request)
 }

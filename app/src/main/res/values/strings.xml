@@ -34,5 +34,9 @@
     <string name="mark_as_watched">Mark as watched</string>
     <string name="save_to_watch_later">Save to watch later</string>
     <string name="notify">Notify</string>
+    <string name="demo_movie_overview">In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.</string>
+    <string name="demo_movie_title">Elemental</string>
+    <string name="overview">Overview</string>
+    <string name="genres">Genres</string>
 
 </resources>

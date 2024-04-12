@@ -1,193 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:orientation="vertical"
-    tools:context=".MovieInfoFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clMovieGraphics"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/ivMovieBackdrop"
-            android:layout_width="wrap_content"
-            android:layout_height="220dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/movie_backdrop"
-            android:scaleType="fitXY"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/elemental_backdrop" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="220dp"
-            android:layout_gravity="top"
-            android:background="@drawable/fade_bottom"
-            app:layout_constraintBottom_toBottomOf="@id/ivMovieBackdrop"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvMoviePoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
-
-            <ImageView
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/movie_poster"
-                app:srcCompat="@drawable/elementals" />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tvMovieTitle"
-            android:layout_width="256dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Elemental"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivMovieBackdrop" />
-
-        <androidx.appcompat.widget.AppCompatRatingBar
-            style="?android:attr/ratingBarStyleIndicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:isIndicator="true"
-            android:progressBackgroundTint="@color/offwhite"
-            android:progressTint="@color/goldenyellow"
-            android:rating="4.5"
-            android:stepSize="0.1"
-            app:layout_constraintLeft_toRightOf="@id/cvMoviePoster"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    android:background="@color/black">
 
     <LinearLayout
+        android:id="@+id/movieInfoRootLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginVertical="16dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:context=".MovieMovieDetailment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMovieGraphics"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivMovieDetailMovieBackdrop"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/movie_backdrop"
+                android:scaleType="fitXY"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/elemental_backdrop" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:layout_gravity="top"
+                android:background="@drawable/fade_bottom"
+                app:layout_constraintBottom_toBottomOf="@id/ivMovieDetailMovieBackdrop"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMoviePoster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivMovieDetailMoviePoster"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/movie_poster"
+                    app:srcCompat="@drawable/elementals" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvMovieDetailMovieTitle"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/demo_movie_title"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivMovieDetailMovieBackdrop" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rbMovieInfoMovieRating"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:isIndicator="true"
+                android:progressBackgroundTint="@color/offwhite"
+                android:progressTint="@color/goldenyellow"
+                android:rating="4.5"
+                android:stepSize="0.1"
+                app:layout_constraintLeft_toRightOf="@id/cvMoviePoster"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieDetailMovieTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="16dp"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:contentDescription="@string/save_to_watch_later"
-                android:src="@drawable/baseline_bookmark_border"
-                android:tooltipText="@string/save_to_watch_later" />
+                android:layout_marginBottom="8dp">
 
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:contentDescription="@string/mark_as_watched"
-                android:src="@drawable/check_circle_outline"
-                android:tooltipText="@string/mark_as_watched" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/save_to_watch_later"
+                    android:src="@drawable/baseline_bookmark_border"
+                    android:tooltipText="@string/save_to_watch_later" />
 
-            <ImageButton
-                android:layout_width="0dp"
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/mark_as_watched"
+                    android:src="@drawable/check_circle_outline"
+                    android:tooltipText="@string/mark_as_watched" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/notify"
+                    android:src="@drawable/outline_circle_notification"
+                    android:tooltipText="@string/notify" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:contentDescription="@string/notify"
-                android:src="@drawable/outline_circle_notification"
-                android:tooltipText="@string/notify" />
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/genres"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgMovieDetailsGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:chipSpacingVertical="0dp">
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Animation" />-->
+            </com.google.android.material.chip.ChipGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/overview"
+                android:textColor="@color/white"
+                android:textFontWeight="900"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvMovieDetailMovieOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto_light"
+                android:letterSpacing="0.015"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/demo_movie_overview"
+                android:textColor="@color/offwhite" />
+
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Genres"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:chipSpacingVertical="0dp">
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Animation" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comedy" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Family" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fantasy" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Romance" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adventure" />
-        </com.google.android.material.chip.ChipGroup>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Overview"
-            android:textColor="@color/white"
-            android:textFontWeight="900"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/roboto_light"
-            android:letterSpacing="0.015"
-            android:text="In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
-            android:textColor="@color/offwhite" />
-
     </LinearLayout>
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpiMovieDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        app:indicatorColor="@color/primary"
+        app:trackColor="@color/offwhite" />
 
-</LinearLayout>
+
+</RelativeLayout>
