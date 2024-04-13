@@ -19,7 +19,7 @@
             android:background="@color/black"
             android:orientation="vertical"
             android:visibility="gone"
-            tools:context=".MovieMovieDetailment">
+            tools:context=".MovieDetailFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clMovieGraphics"

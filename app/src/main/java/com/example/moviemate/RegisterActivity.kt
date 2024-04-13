@@ -86,6 +86,7 @@ class RegisterActivity : AppCompatActivity() {
                     // Sleeping for 1s to make sure that the username gets updated in the home page
                     Thread.sleep(1000)
                     val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     finish()
 

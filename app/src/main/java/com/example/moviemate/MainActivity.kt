@@ -68,8 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             else -> {
-                Toast.makeText(applicationContext, "Invalid Option Selected", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(this, "Invalid Option Selected", Toast.LENGTH_SHORT).show()
                 return false
             }
         }

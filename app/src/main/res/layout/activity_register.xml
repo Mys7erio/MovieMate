@@ -98,12 +98,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="30dp"
-                    android:text="@string/register_page_confirm_password"
+                    android:text="@string/login_page_password_label"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/etRegConfPassword"
+                    android:id="@+id/etRegPassword"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
@@ -119,12 +119,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="30dp"
-                    android:text="@string/login_page_password_label"
+                    android:text="@string/register_page_confirm_password"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/etRegPassword"
+                    android:id="@+id/etRegConfPassword"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
