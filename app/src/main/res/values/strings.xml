@@ -38,5 +38,17 @@
     <string name="demo_movie_title">Elemental</string>
     <string name="overview">Overview</string>
     <string name="genres">Genres</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="dummy_username">Drew Taggart</string>
+    <string name="dummy_email">andrew@thechainsmokers.com</string>
+    <string name="preferences">Preferences</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="pending_watch">Pending Watch</string>
+    <string name="update_preferences">Update Preferences</string>
+    <string name="profile">Profile</string>
+    <string name="nickname">Nickname</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
 
 </resources>

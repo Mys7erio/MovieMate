@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageRequest
+import com.example.moviemate.api.createErrorListener
 
 
 private const val imageBaseAPI = "https://image.tmdb.org/t/p"

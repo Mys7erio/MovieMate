@@ -1,6 +1,5 @@
 package com.example.moviemate
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +10,11 @@ import android.widget.Toast
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.Volley
+import com.example.moviemate.api.setImage
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +30,9 @@ class ProfileFragment : Fragment() {
     private lateinit var matETCurrentPassword: TextInputEditText
     private lateinit var matETNewPassword: TextInputEditText
     private lateinit var btnUpdateProfile: MaterialButton
-    private var editProfileEnabled = false
+    private lateinit var ivProfileImage: ImageView
+
+    private lateinit var requestQueue: RequestQueue
     private var nickname = ""
 
 
@@ -39,85 +43,36 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         auth = (activity as MainActivity).auth
+        requestQueue = Volley.newRequestQueue(requireContext())
         tvProfileNickname = view.findViewById(R.id.tvProfileNickname)
         matETProfileNickname = view.findViewById(R.id.matETProfileNickname)
-        btnUpdateProfile = view.findViewById<MaterialButton>(R.id.btnUpdateProfile)
+        btnUpdateProfile = view.findViewById(R.id.btnUpdateProfile)
+        ivProfileImage = view.findViewById(R.id.ivProfileProfileImage)
 
         // Handle Sign Out
-        signOutBtn = view.findViewById<Button>(R.id.btnSignOut)
+        signOutBtn = view.findViewById(R.id.btnSignOut)
         signOutBtn.setOnClickListener { handleSignOut() }
 
         tvProfileEmail = view.findViewById(R.id.tvProfileEmail)
         tvProfileEmail.text = auth.currentUser?.email
 
-        if (auth.currentUser!!.displayName.isNullOrEmpty()) {
-            nickname = "Adventurer"
+        nickname = if (auth.currentUser!!.displayName.isNullOrEmpty()) {
+            "Adventurer"
         } else {
-            nickname = auth.currentUser!!.displayName!!
+            auth.currentUser!!.displayName!!
         }
 
-        // Enable update profile button when the user edits text in the profile section
-        matETCurrentPassword = view.findViewById(R.id.matETProfileCurrentPassword)
-        matETCurrentPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                if (!matETCurrentPassword.text.isNullOrEmpty()) {
-                    btnUpdateProfile.isEnabled = true
-                } else {
-                    btnUpdateProfile.isEnabled = false
-                }
-            }
-        })
-        matETNewPassword = view.findViewById(R.id.matETProfileNewPassword)
-        matETNewPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                if (!matETNewPassword.text.isNullOrEmpty())
-                    btnUpdateProfile.isEnabled = true
-                else
-                    btnUpdateProfile.isEnabled = false
-            }
-        })
-        matETProfileNickname.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                if (s.toString() != nickname) {
-                    btnUpdateProfile.isEnabled = true
-                } else {
-                    btnUpdateProfile.isEnabled = false
-                }
-            }
-        })
-
         // Add handler for profile updation
+        customiseUpdateProfileBtn(view)
         btnUpdateProfile.setOnClickListener { handleProfileUpdate() }
+
         return view
     }
 
-    private fun handleProfileUpdate() {
-        if (!matETProfileNickname.text!!.isEmpty()) {
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName(matETProfileNickname.text.toString())
-                .build()
-            auth.currentUser!!.updateProfile(profileUpdates)
-            Toast.makeText(requireContext(), "Nickname Changed", Toast.LENGTH_LONG).show()
-
-            // Update nickname and email
-            nickname = matETProfileNickname.text.toString()
-            tvProfileNickname.text = nickname
-            matETProfileNickname.setText(nickname)
-            btnUpdateProfile.isEnabled = false
-        }
-    }
 
     override fun onResume() {
         super.onResume()
-        // Update nickname and email
-        tvProfileNickname.text = nickname
-        matETProfileNickname.setText(nickname)
+        handleNicknameChange()
     }
 
     private fun handleSignOut() {
@@ -135,6 +90,65 @@ class ProfileFragment : Fragment() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
+    }
+
+
+    private fun handleProfileUpdate() {
+        if (matETProfileNickname.text!!.isNotEmpty()) {
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(matETProfileNickname.text.toString())
+                .build()
+            auth.currentUser!!.updateProfile(profileUpdates)
+            Toast.makeText(requireContext(), "Nickname Changed", Toast.LENGTH_LONG).show()
+
+            // Update nickname and email
+            nickname = matETProfileNickname.text.toString()
+            handleNicknameChange()
+            btnUpdateProfile.isEnabled = false
+        }
+    }
+
+
+    private fun handleNicknameChange() {
+        // Update nickname and email
+        tvProfileNickname.text = nickname
+        matETProfileNickname.setText(nickname)
+
+        var profileImageUrl = "https://api.dicebear.com/8.x/adventurer/png"
+        profileImageUrl += "?backgroundColor=transparent"
+        profileImageUrl += "&seed=$nickname"
+
+        setImage(requestQueue, profileImageUrl) {
+            ivProfileImage.setImageBitmap(it)
+        }
+    }
+
+
+    private fun customiseUpdateProfileBtn(view: View) {
+        // Enable update profile button when the user edits text in the profile section
+        matETCurrentPassword = view.findViewById(R.id.matETProfileCurrentPassword)
+        matETCurrentPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                btnUpdateProfile.isEnabled = !matETCurrentPassword.text.isNullOrEmpty()
+            }
+        })
+        matETNewPassword = view.findViewById(R.id.matETProfileNewPassword)
+        matETNewPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                btnUpdateProfile.isEnabled = !matETNewPassword.text.isNullOrEmpty()
+            }
+        })
+        matETProfileNickname.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                btnUpdateProfile.isEnabled = s.toString() != nickname
+            }
+        })
     }
 
 }

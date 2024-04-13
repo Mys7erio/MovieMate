@@ -7,7 +7,7 @@
     <!-- Padding bottom is to make up for the space being used by bottom navigation -->
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/black"
         android:orientation="vertical"
         android:paddingBottom="64dp">
@@ -29,8 +29,10 @@
 
                 <ImageView
                     android:layout_width="match_parent"
+                    android:id="@+id/ivProfileProfileImage"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_user_circle" />
+                    android:src="@drawable/ic_user_circle"
+                    android:contentDescription="@string/profile_image" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -38,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Drew Taggart"
+                android:text="@string/dummy_username"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -51,7 +53,7 @@
                 android:layout_margin="8dp"
                 android:letterSpacing="0.08"
 
-                android:text="andrew@thechainsmokers.com"
+                android:text="@string/dummy_email"
                 android:textColor="@color/offwhite"
                 android:textSize="14sp" />
 
@@ -78,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:text="Preferences"
+                android:text="@string/preferences"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -88,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:paddingHorizontal="8dp"
-                android:text="Recommendations"
+                android:text="@string/recommendations"
                 android:textColor="@color/offwhite"
                 android:textSize="16sp" />
 
@@ -97,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:paddingHorizontal="8dp"
-                android:text="Pending Watch"
+                android:text="@string/pending_watch"
                 android:textColor="@color/offwhite"
                 android:textSize="16sp" />
 
@@ -108,7 +110,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="16dp"
                 android:backgroundTint="@color/primary"
-                android:text="Update Preferences"
+                android:text="@string/update_preferences"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="4dp" />
@@ -126,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Profile"
+                android:text="@string/profile"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -135,7 +137,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nickname"
+                android:hint="@string/nickname"
                 app:boxStrokeColor="@color/offwhite"
                 app:cursorColor="@color/hyperblue"
                 app:hintTextColor="@color/white">
@@ -145,7 +147,7 @@
                     android:id="@+id/matETProfileNickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Drew Taggart"
+                    android:text="@string/dummy_username"
                     android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Current Password"
+                android:hint="@string/current_password"
                 app:boxStrokeColor="@color/offwhite"
                 app:cursorColor="@color/hyperblue"
                 app:endIconMode="password_toggle"
@@ -173,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
-                android:hint="New Password"
+                android:hint="@string/new_password"
                 app:boxStrokeColor="@color/offwhite"
                 app:cursorColor="@color/hyperblue"
                 app:endIconMode="password_toggle"
@@ -197,7 +199,7 @@
                 android:layout_marginVertical="64dp"
                 android:backgroundTint="@color/button_states"
                 android:enabled="false"
-                android:text="Update Profile"
+                android:text="@string/update_profile"
                 android:textColor="@color/button_text_states"
                 android:textSize="16sp"
                 app:cornerRadius="4dp" />

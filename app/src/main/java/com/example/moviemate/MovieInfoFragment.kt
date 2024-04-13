@@ -1,8 +1,6 @@
 package com.example.moviemate
 
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +10,9 @@ import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatRatingBar
 import android.widget.TextView
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.Volley
+import com.example.moviemate.api.getMovieDetails
+import com.example.moviemate.api.setImage
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -86,24 +85,5 @@ class MovieInfoFragment : Fragment() {
         }
 
         return view
-    }
-
-    private fun setImage(
-        requestQueue: RequestQueue,
-        imageUrl: String,
-        callbackFunc: (image: Bitmap) -> Unit
-    ) {
-
-        val request = ImageRequest(
-            imageUrl,
-            { imageResponse ->
-                callbackFunc(imageResponse)
-            }, 0, 0, null, null,
-
-            createErrorListener() // Handle Errors
-        )
-        requestQueue.add(request)
-        Log.e("MOVIEMATE", "FETCHED IMAGE")
-
     }
 }

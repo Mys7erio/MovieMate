@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.example.moviemate.api.getRecommendedMovies
+import com.example.moviemate.api.getTrendingMovies
+import com.example.moviemate.api.setImage
 
 class HomeFragment : Fragment() {
 
@@ -22,6 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var tvHomeGreeting: TextView
     private lateinit var requestQueue: RequestQueue
     private lateinit var fragmentManager: FragmentManager
+    private lateinit var ivHomeProfileImage: ImageView
 
 
     override fun onCreateView(
@@ -32,6 +36,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         tvHomeGreeting = view.findViewById(R.id.tvHomeGreeting)
+        ivHomeProfileImage = view.findViewById(R.id.ivHomeProfileImage)
 
         // auth = (activity as? MainActivity)?.auth ?: FirebaseAuth.getInstance()
         // Fancy version feat. Typecasting, null safety OP. and elvis OP.
@@ -53,18 +58,26 @@ class HomeFragment : Fragment() {
             tvHomeGreeting.text = "Adventurer"
         else
             tvHomeGreeting.text = nickname.toString()
+
+
+        var profileImageUrl = "https://api.dicebear.com/8.x/adventurer/png"
+        profileImageUrl += "?backgroundColor=transparent"
+        profileImageUrl += "&seed=${auth.currentUser!!.displayName}"
+        setImage(requestQueue, profileImageUrl) {
+            ivHomeProfileImage.setImageBitmap(it)
+        }
     }
 
 
     private fun populateHomeScreen(view: View) {
         // TRENDING MOVIES
-        getTrending(requestQueue, apiKey) { movieList ->
+        getTrendingMovies(requestQueue, apiKey) { movieList ->
             val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingMovies)
             rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
             rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
 
             // RECOMMENDED MOVIES
-            getRecommendations(requestQueue, apiKey, 693134) { movieList ->
+            getRecommendedMovies(requestQueue, apiKey, 693134) { movieList ->
                 val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedMovies)
                 rvRecommends.layoutManager =
                     LinearLayoutManager(requireContext(), HORIZONTAL, false)
@@ -72,14 +85,14 @@ class HomeFragment : Fragment() {
             }
 
             // TRENDING SHOWS
-            getTrending(requestQueue, apiKey) { movieList ->
+            getTrendingMovies(requestQueue, apiKey) { movieList ->
                 val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingShows)
                 rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
                 rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
             }
 
             // RECOMMENDED SHOWS
-            getRecommendations(requestQueue, apiKey, 13183) { movieList ->
+            getRecommendedMovies(requestQueue, apiKey, 13183) { movieList ->
                 val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedShows)
                 rvRecommends.layoutManager =
                     LinearLayoutManager(requireContext(), HORIZONTAL, false)
