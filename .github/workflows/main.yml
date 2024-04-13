@@ -51,33 +51,11 @@ jobs:
           name: MovieMate-v1.${{ github.run_number }}-release
           path: ${{ env.main_project_module }}/build/outputs/apk/release/
 
-  publish:
-    name: Publish build
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Download APK from build
-        uses: actions/download-artifact@v4
+      - name: Create release
+        uses: softprops/action-gh-release@v2.0.4
         with:
-          name: MovieMate-v1.${{ github.run_number }}-release
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Create Release
-        id: create_release
-        uses: comnoco/create-release-action@v2.0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: v1.${{ github.run_number }}
-          release_name: MovieMate-v1.${{ github.run_number }}-release
-
-      - name: Upload Release APK
-        id: upload_release_asset
-        uses: svenstaro/upload-release-action@2.9.0
-        with: 
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.main_project_module }}/build/outputs/apk/release/app-release-unsigned.apk
-          asset_name: MovieMate-v1.${{ github.run_number }}-release 
+          generate_release_notes: true
+          prerelease: false
+          tag_name: MovieMate-v1.${{ github.run_number }}-release
+          files: app/build/outputs/apk/release/app-release-unsigned.apk
+          
