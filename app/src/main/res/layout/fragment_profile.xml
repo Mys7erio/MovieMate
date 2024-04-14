@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/ivProfileProfileImage"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_user_circle"
+                    android:src="@drawable/ic_user_circle_filled"
                     android:contentDescription="@string/profile_image" />
             </androidx.cardview.widget.CardView>
 

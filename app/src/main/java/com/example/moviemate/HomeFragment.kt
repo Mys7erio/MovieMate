@@ -37,6 +37,8 @@ class HomeFragment : Fragment() {
 
         tvHomeGreeting = view.findViewById(R.id.tvHomeGreeting)
         ivHomeProfileImage = view.findViewById(R.id.ivHomeProfileImage)
+        tvHomeGreeting.setOnClickListener { navigateToProfile() }
+        ivHomeProfileImage.setOnClickListener { navigateToProfile() }
 
         // auth = (activity as? MainActivity)?.auth ?: FirebaseAuth.getInstance()
         // Fancy version feat. Typecasting, null safety OP. and elvis OP.
@@ -100,4 +102,13 @@ class HomeFragment : Fragment() {
             }
         }
     }
-}
+
+
+    private fun navigateToProfile() {
+        fragmentManager
+            .beginTransaction()
+            .replace(R.id.frame_container, ProfileFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+ }

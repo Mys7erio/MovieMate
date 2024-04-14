@@ -8,10 +8,10 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity : AppCompatActivity() {
-
     private var apiKey: String = ""
     lateinit var auth: FirebaseAuth
     private lateinit var bottomNavigationBar: BottomNavigationView

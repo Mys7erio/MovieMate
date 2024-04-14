@@ -32,7 +32,7 @@
                     android:layout_width="48sp"
                     android:layout_height="48sp"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/ic_user_circle" />
+                    android:src="@drawable/ic_user_circle_filled" />
 
             </androidx.cardview.widget.CardView>
 

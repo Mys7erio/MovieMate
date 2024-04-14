@@ -4,25 +4,25 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/home"
+        android:icon="@drawable/ic_home_filled"
         android:id="@+id/navitem_home"
         android:title="@string/menuitem_home" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_bookmark"
+        android:icon="@drawable/ic_bookmark_filled"
         android:id="@+id/navitem_watchlist"
         android:title="@string/menuitem_watchlist" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_watched"
+        android:icon="@drawable/ic_watched_filled"
         android:id="@+id/navitem_watched"
         android:title="@string/menuitem_watched" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_user_circle"
+        android:icon="@drawable/ic_user_circle_filled"
         android:id="@+id/navitem_profile"
         android:title="@string/menuitem_profile" />
 </menu>
