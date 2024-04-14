@@ -1,21 +1,26 @@
-package com.example.moviemate
+package com.example.moviemate.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.widget.AppCompatRatingBar
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatRatingBar
+import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.example.moviemate.BuildConfig
+import com.example.moviemate.R
 import com.example.moviemate.api.getDocRefToUserCol
 import com.example.moviemate.api.getMovieDetails
 import com.example.moviemate.api.isMovieInUserCol
 import com.example.moviemate.api.setImage
+import com.example.moviemate.utils.BACKDROP_SIZE
+import com.example.moviemate.utils.IMAGE_BASE_API
+import com.example.moviemate.utils.POSTER_SIZE
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -24,15 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
-
-private const val imageBaseAPI = "https://image.tmdb.org/t/p"
-
-// w45, w92, w154, w185, w300, w500, original
-private const val posterSize = "w300"
-
-// w300, w780, w1280, original
-private const val backdropSize = "w780"
 
 class MovieInfoFragment : Fragment() {
     private val apiKey = BuildConfig.API_KEY
@@ -102,8 +98,8 @@ class MovieInfoFragment : Fragment() {
             val rbMovieRating: AppCompatRatingBar = view.findViewById(R.id.rbMovieInfoMovieRating)
             val chipGroup: ChipGroup = view.findViewById(R.id.cgMovieDetailsGenres)
 
-            posterUrl = "$imageBaseAPI/$posterSize${movieDetails.posterPath}"
-            backdropUrl = "$imageBaseAPI/$backdropSize${movieDetails.backdropPath}"
+            posterUrl = "$IMAGE_BASE_API/$POSTER_SIZE${movieDetails.posterPath}"
+            backdropUrl = "$IMAGE_BASE_API/$BACKDROP_SIZE${movieDetails.backdropPath}"
 
             // Set poster and backdrop
             setImage(requestQueue, posterUrl) { posterBitmap ->

@@ -6,6 +6,10 @@ import android.content.Intent
 import android.widget.Toast
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.example.moviemate.fragments.HomeFragment
+import com.example.moviemate.fragments.ProfileFragment
+import com.example.moviemate.fragments.WatchedFragment
+import com.example.moviemate.fragments.WatchlistFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore

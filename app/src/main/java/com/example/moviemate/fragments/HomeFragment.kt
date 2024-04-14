@@ -1,22 +1,25 @@
-package com.example.moviemate
+package com.example.moviemate.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.google.firebase.auth.FirebaseAuth
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.example.moviemate.BuildConfig
+import com.example.moviemate.MainActivity
+import com.example.moviemate.R
+import com.example.moviemate.adapter.MovieAdapter
 import com.example.moviemate.api.getRecommendedMovies
 import com.example.moviemate.api.getTrendingMovies
 import com.example.moviemate.api.setImage
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
@@ -75,30 +78,32 @@ class HomeFragment : Fragment() {
         // TRENDING MOVIES
         getTrendingMovies(requestQueue, apiKey) { movieList ->
             val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingMovies)
-            rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-            rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+            rvTrending.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            rvTrending.adapter = MovieAdapter(requestQueue, movieList, fragmentManager)
 
             // RECOMMENDED MOVIES
             getRecommendedMovies(requestQueue, apiKey, 693134) { movieList ->
                 val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedMovies)
                 rvRecommends.layoutManager =
-                    LinearLayoutManager(requireContext(), HORIZONTAL, false)
-                rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                rvRecommends.adapter = MovieAdapter(requestQueue, movieList, fragmentManager)
             }
 
             // TRENDING SHOWS
             getTrendingMovies(requestQueue, apiKey) { movieList ->
                 val rvTrending = view.findViewById<RecyclerView>(R.id.rvTrendingShows)
-                rvTrending.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
-                rvTrending.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+                rvTrending.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                rvTrending.adapter = MovieAdapter(requestQueue, movieList, fragmentManager)
             }
 
             // RECOMMENDED SHOWS
             getRecommendedMovies(requestQueue, apiKey, 13183) { movieList ->
                 val rvRecommends = view.findViewById<RecyclerView>(R.id.rvRecommendedShows)
                 rvRecommends.layoutManager =
-                    LinearLayoutManager(requireContext(), HORIZONTAL, false)
-                rvRecommends.adapter = MovieCardAdapter(requestQueue, movieList, fragmentManager)
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                rvRecommends.adapter = MovieAdapter(requestQueue, movieList, fragmentManager)
             }
         }
     }

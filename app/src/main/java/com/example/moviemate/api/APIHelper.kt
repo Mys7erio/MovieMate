@@ -5,7 +5,7 @@ import android.util.Log
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.ImageRequest
-import com.example.moviemate.MovieModel
+import com.example.moviemate.adapter.MovieModel
 import org.json.JSONObject
 
 fun getParsedMovieModel(movieObject: JSONObject): MovieModel {
@@ -70,6 +70,6 @@ fun setImage(
         createErrorListener() // Handle Errors
     )
     requestQueue.add(request)
-    Log.e("MOVIEMATE", "FETCHED IMAGE")
+    Log.i("MOVIEMATE", "FETCHED IMAGE $imageUrl")
 
 }

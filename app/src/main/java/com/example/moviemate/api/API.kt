@@ -4,7 +4,7 @@ import android.util.Log
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.moviemate.MovieModel
+import com.example.moviemate.adapter.MovieModel
 
 
 fun getTrendingMovies(
@@ -54,7 +54,7 @@ fun getRecommendedMovies(
 ): ArrayList<MovieModel> {
 
     val url = "https://api.themoviedb.org/3/movie/$movieID/recommendations"
-    Log.e("MOVIEMATE", url)
+    Log.i("MOVIEMATE", "Recommended $url")
     val moviesList = ArrayList<MovieModel>()
 
     val request = object :
@@ -67,7 +67,6 @@ fun getRecommendedMovies(
                 for (i in 0 until resultsArray.length()) {
                     val movieObject = resultsArray.getJSONObject(i)
                     val movie = getParsedMovieModel(movieObject)
-                    Log.e("MOVIEMATE", movie.title)
                     moviesList.add(movie)
                 }
                 // Invoke the callback with the fetched data
