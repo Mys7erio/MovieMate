@@ -49,5 +49,6 @@
     <string name="already_watched">Already Watched</string>
     <string name="done_watching">Done Watching</string>
     <string name="save_to_watch_later">Save to Watch Later</string>
+    <string name="your_watchlist">Your Watchlist</string>
 
 </resources>

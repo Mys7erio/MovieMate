@@ -4,7 +4,7 @@
     android:layout_width="144dp"
     android:layout_height="192dp"
     android:layout_gravity="center"
-    android:layout_marginEnd="16dp"
+    android:layout_margin="8dp"
     android:clickable="true"
     app:cardBackgroundColor="@color/fg_dark"
     app:cardCornerRadius="16dp"
@@ -14,15 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-<!--        <TextView-->
-<!--            android:id="@+id/cmMovieName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center"-->
-<!--            android:text="MOVIE NAME"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="24sp" />-->
 
         <ImageView
             android:id="@+id/cardPoster"
