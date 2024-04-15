@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:fillViewport="true"
-    android:paddingHorizontal="8dp"
-    android:paddingTop="32dp"
-    android:paddingBottom="16dp">
+    android:paddingVertical="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,35 +16,36 @@
         tools:context=".fragments.WatchlistFragment"
         tools:ignore="ScrollViewSize">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="@string/your_watchlist"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
         <LinearLayout
             android:id="@+id/watchlistRootLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
             android:orientation="vertical"
             android:paddingBottom="64dp"
             android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="@string/your_watchlist"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvWatchlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginVertical="16dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
+                app:spanCount="3"
                 tools:listitem="@layout/card_movie" />
 
         </LinearLayout>
