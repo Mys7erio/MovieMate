@@ -8,11 +8,11 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.moviemate.fragments.HomeFragment
 import com.example.moviemate.fragments.ProfileFragment
+import com.example.moviemate.fragments.SearchFragment
 import com.example.moviemate.fragments.WatchedFragment
 import com.example.moviemate.fragments.WatchlistFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity : AppCompatActivity() {
@@ -68,6 +68,11 @@ class MainActivity : AppCompatActivity() {
 
             R.id.navitem_watched -> {
                 replaceFragment(WatchedFragment())
+                return true
+            }
+
+            R.id.navitem_search -> {
+                replaceFragment(SearchFragment())
                 return true
             }
 

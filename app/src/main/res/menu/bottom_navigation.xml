@@ -2,27 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navitem_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_home_filled"
-        android:id="@+id/navitem_home"
         android:title="@string/menuitem_home" />
     <item
+        android:id="@+id/navitem_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_search_outlined"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/navitem_watchlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_bookmark_filled"
-        android:id="@+id/navitem_watchlist"
         android:title="@string/menuitem_watchlist" />
     <item
+        android:id="@+id/navitem_watched"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_watched_filled"
-        android:id="@+id/navitem_watched"
         android:title="@string/menuitem_watched" />
     <item
+        android:id="@+id/navitem_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_user_circle_filled"
-        android:id="@+id/navitem_profile"
         android:title="@string/menuitem_profile" />
 </menu>
