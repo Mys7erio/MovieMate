@@ -6,12 +6,16 @@ import android.content.Intent
 import android.widget.Toast
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.example.moviemate.fragments.HomeFragment
+import com.example.moviemate.fragments.ProfileFragment
+import com.example.moviemate.fragments.SearchFragment
+import com.example.moviemate.fragments.WatchedFragment
+import com.example.moviemate.fragments.WatchlistFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
-
     private var apiKey: String = ""
     lateinit var auth: FirebaseAuth
     private lateinit var bottomNavigationBar: BottomNavigationView
@@ -64,6 +68,11 @@ class MainActivity : AppCompatActivity() {
 
             R.id.navitem_watched -> {
                 replaceFragment(WatchedFragment())
+                return true
+            }
+
+            R.id.navitem_search -> {
+                replaceFragment(SearchFragment())
                 return true
             }
 

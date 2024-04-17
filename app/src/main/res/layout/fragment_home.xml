@@ -14,7 +14,7 @@
         android:paddingHorizontal="8dp"
         android:paddingTop="16dp"
         android:paddingBottom="128dp"
-        tools:context=".HomeFragment">
+        tools:context=".fragments.HomeFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,11 +28,11 @@
                 app:cardCornerRadius="24sp">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/ivHomeProfileImage"
                     android:layout_width="48sp"
                     android:layout_height="48sp"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/ic_user_circle" />
+                    android:src="@drawable/ic_user_circle_filled" />
 
             </androidx.cardview.widget.CardView>
 

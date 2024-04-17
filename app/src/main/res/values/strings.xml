@@ -10,7 +10,6 @@
     <!--    -->
     <string name="home_page">Home Page</string>
     <string name="profile_page">Profile Page</string>
-    <string name="watchlist">Watchlist Page</string>
     <string name="watched_fragment">Watched Page</string>
     <string name="login_page_username_hint">you@example.com</string>
     <string name="login_page_password_hint">********</string>
@@ -31,12 +30,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="movie_backdrop">Movie Backdrop</string>
-    <string name="mark_as_watched">Mark as watched</string>
-    <string name="save_to_watch_later">Save to watch later</string>
-    <string name="notify">Notify</string>
     <string name="demo_movie_overview">In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.</string>
     <string name="demo_movie_title">Elemental</string>
     <string name="overview">Overview</string>
     <string name="genres">Genres</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="dummy_username">Drew Taggart</string>
+    <string name="dummy_email">andrew@thechainsmokers.com</string>
+    <string name="preferences">Preferences</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="pending_watch">Pending Watch</string>
+    <string name="update_preferences">Update Preferences</string>
+    <string name="profile">Profile</string>
+    <string name="nickname">Nickname</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="already_watched">Already Watched</string>
+    <string name="done_watching">Done Watching</string>
+    <string name="save_to_watch_later">Save to Watch Later</string>
+    <string name="your_watchlist">Your Watchlist</string>
+    <string name="search">Search</string>
 
 </resources>

@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fillViewport="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:paddingBottom="96dp">
 
         <LinearLayout
             android:id="@+id/movieInfoRootLayout"
@@ -85,7 +86,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:isIndicator="true"
-                    android:progressBackgroundTint="@color/offwhite"
                     android:progressTint="@color/goldenyellow"
                     android:rating="4.5"
                     android:stepSize="0.1"
@@ -104,35 +104,69 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp">
+                    android:layout_height="wrap_content">
 
                     <ImageButton
+                        android:id="@+id/btnWatchlist"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/black"
                         android:contentDescription="@string/save_to_watch_later"
-                        android:src="@drawable/baseline_bookmark_border"
+                        android:src="@drawable/ic_bookmark_outlined"
                         android:tooltipText="@string/save_to_watch_later" />
 
                     <ImageButton
+                        android:id="@+id/btnMarkWatched"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/black"
-                        android:contentDescription="@string/mark_as_watched"
-                        android:src="@drawable/check_circle_outline"
-                        android:tooltipText="@string/mark_as_watched" />
+                        android:contentDescription="@string/done_watching"
+                        android:src="@drawable/ic_check_circle_outline"
+                        android:tooltipText="@string/done_watching" />
 
                     <ImageButton
+                        android:id="@+id/btnNotify"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/black"
-                        android:contentDescription="@string/notify"
-                        android:src="@drawable/outline_circle_notification"
-                        android:tooltipText="@string/notify" />
+                        android:src="@drawable/ic_notification_circle_outlined" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:id="@+id/tvMovieInfoWatchlist"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvMovieInfoDoneWatching"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvMovieInfoNotify"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
                 </LinearLayout>
 
                 <TextView
@@ -190,7 +224,7 @@
             android:layout_centerInParent="true"
             android:indeterminate="true"
             app:indicatorColor="@color/primary"
-            app:trackColor="@color/offwhite" />
+            app:trackColor="@color/white" />
 
     </RelativeLayout>
 </ScrollView>
