@@ -1,6 +1,8 @@
 package com.example.moviemate.utils
 
 
+const val RECOMMENDATION_HISTORY_LIMIT = 10
+
 
 const val IMAGE_BASE_API = "https://image.tmdb.org/t/p"
 

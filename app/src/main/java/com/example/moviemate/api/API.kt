@@ -12,7 +12,7 @@ fun getTrendingMovies(
     apiKey: String,
     callback: (ArrayList<MovieModel>) -> Unit // Callback parameter
 ): ArrayList<MovieModel> {
-    val url = "https://api.themoviedb.org/3/movie/popular"
+    val url = "https://api.themoviedb.org/3/movie/popular?include_adult=false"
     val moviesList = ArrayList<MovieModel>()
 
     val request = object :
@@ -53,7 +53,7 @@ fun getRecommendedMovies(
     callback: (ArrayList<MovieModel>) -> Unit // Callback parameter
 ): ArrayList<MovieModel> {
 
-    val url = "https://api.themoviedb.org/3/movie/$movieID/recommendations"
+    val url = "https://api.themoviedb.org/3/movie/$movieID/recommendations?include_adult=false"
     Log.i("MOVIEMATE", "Recommended $url")
     val moviesList = ArrayList<MovieModel>()
 
@@ -96,7 +96,7 @@ fun searchMovies(
     callback: (ArrayList<MovieModel>) -> Unit // Callback parameter
 ): ArrayList<MovieModel> {
 
-    val url = "https://api.themoviedb.org/3/search/movie?query=$searchQuery"
+    val url = "https://api.themoviedb.org/3/search/movie?query=$searchQuery&include_adult=false"
     Log.i("MOVIEMATE", "SEARCH $url")
     val moviesList = ArrayList<MovieModel>()
 
