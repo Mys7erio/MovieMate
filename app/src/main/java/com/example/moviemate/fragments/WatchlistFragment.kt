@@ -65,7 +65,7 @@ class WatchlistFragment : Fragment() {
 
                 Log.e("WATCHLIST", movieList.toString())
                 val rvWatchlist = view.findViewById<RecyclerView>(R.id.rvWatchlist)
-                var layoutManager = GridLayoutManager(requireContext(), 3)
+                val layoutManager = GridLayoutManager(requireContext(), 3)
                 rvWatchlist.layoutManager = layoutManager
                 rvWatchlist.adapter = MovieAdapter(requestQueue, movieList, fragmentManager)
 

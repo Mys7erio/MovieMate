@@ -88,6 +88,49 @@ fun getRecommendedMovies(
 }
 
 
+// https://api.themoviedb.org/3/search/movie
+fun searchMovies(
+    queue: RequestQueue,
+    apiKey: String,
+    searchQuery: String,
+    callback: (ArrayList<MovieModel>) -> Unit // Callback parameter
+): ArrayList<MovieModel> {
+
+    val url = "https://api.themoviedb.org/3/search/movie?query=$searchQuery"
+    Log.i("MOVIEMATE", "SEARCH $url")
+    val moviesList = ArrayList<MovieModel>()
+
+    val request = object :
+        JsonObjectRequest(
+            Method.GET, url, null,
+
+            // RUN CODE ON SUCCESS
+            Response.Listener { response ->
+                val resultsArray = response.getJSONArray("results")
+                for (i in 0 until resultsArray.length()) {
+                    val movieObject = resultsArray.getJSONObject(i)
+                    val movie = getParsedMovieModel(movieObject)
+                    moviesList.add(movie)
+                }
+                // Invoke the callback with the fetched data
+                callback(moviesList)
+            },
+
+            // RUN CODE ON FAILURE
+            createErrorListener()
+        ) {
+
+        // Set AUTH Headers
+        override fun getHeaders(): MutableMap<String, String> {
+            return createHeaders(apiKey) // Reusing the headers function
+        }
+    }
+
+    queue.add(request)
+    return moviesList
+}
+
+
 // MOVIE DETAILS
 fun getMovieDetails(
     queue: RequestQueue,

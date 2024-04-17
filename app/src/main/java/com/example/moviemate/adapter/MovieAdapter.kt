@@ -1,5 +1,6 @@
 package com.example.moviemate.adapter
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,7 +17,7 @@ import com.example.moviemate.utils.POSTER_SIZE
 
 class MovieAdapter(
     private val requestQueue: RequestQueue,
-    private val movieList: ArrayList<MovieModel>,
+    private var movieList: ArrayList<MovieModel>,
     private val fragmentManager: FragmentManager
 
 ) :
@@ -37,6 +38,12 @@ class MovieAdapter(
         holder.posterPath = currentItem.posterPath
         holder.backdropPath = currentItem.backdropPath
         holder.itemView.setOnClickListener { navigateToMovieInfo(holder) }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setMovieList(newMovieList: ArrayList<MovieModel>){
+        movieList = newMovieList
+        notifyDataSetChanged()
     }
 
     private fun setCardPoster(holder: MovieViewHolder, url: String) {
